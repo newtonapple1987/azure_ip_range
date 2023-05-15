@@ -10,6 +10,6 @@ output.write('"ip","name",""id","region","platform","systemService"\n')
 for i in data["values"]:
     for  j in i["properties"]["addressPrefixes"]:
         output.write('"')
-        output.write('","'.join([j,i["name"],i["id"],i["properties"]["region"],i["properties"]["platform"],i["properties"]["systemService"]]))
+        output.write('","'.join([ i if len(i)>0 else "0" for i in [j,i["name"],i["id"],i["properties"]["region"],i["properties"]["platform"],i["properties"]["systemService"]]]))
         output.write('"\n')
 output.close()
