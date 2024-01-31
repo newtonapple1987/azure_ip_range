@@ -27,7 +27,4 @@ jobs:
         git config --global user.email "nbamlbcpbl@gmail.com"
         git config --global user.name "newtonapple1987"
         git add *
-        git commit -m "update the ip list"
-    - name: push changes
-      if: success()
-      run: git push
+        if[[ -n $(git status --porcelain) ]];then;git commit -m "update the ip list";git push;fi
