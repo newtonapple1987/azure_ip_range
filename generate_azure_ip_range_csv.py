@@ -7,7 +7,6 @@ latest = latest.text
 match = re.search(r"(Public[^\"]+)\"(https://[^\"]+)", latest)
 ip_url = match.group(2)
 data = res.get(ip_url).text
-data = data.read()
 data = json.loads(data)
 
 output = open("azure_ip_range2.csv", "w")
