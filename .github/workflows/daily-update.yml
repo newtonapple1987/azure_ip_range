@@ -1,0 +1,28 @@
+name: Daily-update
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+job:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: set up python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+    - name: update ip
+      run: python generate_azure_ip_range_csv.py
+    - name: commit changes
+      run: |
+        git config --global user.email "nbamlbcpbl@gmail.com"
+        git config --global user.name "newtonapple1987"
+        git add *
+        git commit -m "update the ip list"
+    - name: push changes
+      uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
