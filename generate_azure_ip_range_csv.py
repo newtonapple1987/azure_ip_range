@@ -9,7 +9,7 @@ ip_url = match.group(2)
 data = res.get(ip_url).text
 data = json.loads(data)
 
-output = open("azure_ip_range2.csv", "w")
+output = open("azure_ip_range.csv", "w")
 output.write('"ip","name","id","region","platform","systemService"\n')
 
 for i in data["values"]:
