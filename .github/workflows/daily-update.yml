@@ -29,4 +29,5 @@ jobs:
         git add *
         git commit -m "update the ip list"
     - name: push changes
+      if: success()
       run: git push
