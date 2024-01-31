@@ -3,6 +3,9 @@ name: Daily-update
 on:
   schedule:
     - cron: '0 0 * * *'
+  push:
+    branches:
+      - main
 job:
   build:
     runs-on: ubuntu-latest
@@ -22,7 +25,4 @@ job:
         git add *
         git commit -m "update the ip list"
     - name: push changes
-      uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+      run: git push
