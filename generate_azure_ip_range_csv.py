@@ -1,6 +1,6 @@
 import json
 
-data = open("ServiceTags_Public_20230911.json")
+data = open("ServiceTags_Public_20240122.json")
 data = data.read()
 data = json.loads(data)
 
